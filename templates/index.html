@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MiniChainSupply</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>📦 Supply Chain Blockchain</h1>
+
+    <form method="POST" action="/add">
+        <input type="text" name="product" placeholder="Product Name" required>
+        <input type="text" name="location" placeholder="Current Location" required>
+        <input type="text" name="actor" placeholder="Actor Name" required>
+        <button type="submit">Add Stage</button>
+    </form>
+
+    <h2>🔗 Blockchain</h2>
+    <ul>
+        {% for block in chain %}
+            <li>
+                <strong>Block {{ block.index }}</strong><br>
+                Time: {{ block.timestamp }}<br>
+                Product: {{ block.product }}<br>
+                Location: {{ block.location }}<br>
+                Actor: {{ block.actor }}<br>
+                Prev Hash: {{ block.previous_hash[:10] }}...<br>
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
